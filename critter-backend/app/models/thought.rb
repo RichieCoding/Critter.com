@@ -5,5 +5,5 @@ class Thought < ApplicationRecord
   # has_many :users, through: :likes
 
   has_many :replies
-  has_many :users, through: :replies
+  # has_many :users, through: :replies
 end
