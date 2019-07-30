@@ -9,6 +9,6 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     render json: user, include: [:thoughts, :replies]
   end
-  
+
 
 end
