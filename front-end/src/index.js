@@ -43,6 +43,4 @@ function renderReplies(target) {
   .then(response => response.json())
   .then(data => console.log(data.user.name)
   )
-}
-
 

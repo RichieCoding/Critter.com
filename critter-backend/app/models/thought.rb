@@ -1,5 +1,5 @@
 class Thought < ApplicationRecord
-  belongs_to :user
+  belongs_to :author, :class_name => "User"
 
   has_many :likes
   # has_many :users, through: :likes
