@@ -9,6 +9,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  height: 100vh;
 }
 
 
@@ -30,6 +31,8 @@ body {
 #main-thoughts {
   width: 80%;
   margin: 0 auto;
+  height: 90vh;
+  overflow: scroll;
 }
 
 
@@ -74,3 +77,7 @@ body {
 .commentDiv {
   display: none;
 }
+
+/* #main-thoughts {
+  display: none;
+} */
