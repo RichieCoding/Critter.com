@@ -4,14 +4,39 @@
   box-sizing: border-box;
 }
 
-body {
+
+/*------- NAV BAR ------- */
+
+#nav-bar {
+  width: 100%;
+  background-color: rgb(38, 189, 189);
+  padding: 20px;
+}
+
+#title {
+  color: white;
+}
+
+/*------- THOUGHT DIV ------- */
+
+#main-thoughts {
   width: 80%;
   margin: 0 auto;
 }
-
 
 
 .thoughts {
   border: 1px solid black;
   margin: 15px 0;
 }
+
+.single-reply {
+  background-color: lightblue;
+}
+
+.parentReplyDiv {
+  display: none;
+}
+/* .replyDiv {
+  display: none;
+} */
