@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+body {
+  background-image: url("imgs/architecture-bridge-close-up-1782002.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 
 /*------- NAV BAR ------- */
 
@@ -15,6 +22,7 @@
 
 #title {
   color: white;
+  font-size: 3em;
 }
 
 /*------- THOUGHT DIV ------- */
@@ -28,6 +36,31 @@
 .thoughts {
   border: 1px solid black;
   margin: 15px 0;
+  background-color: white;
+  width: 50%;
+  margin: 20px auto;
+}
+
+.thought-header {
+  background-color: rgb(157, 157, 219);
+}
+
+.thought-header h3 {
+  font-size: 2em;
+}
+
+.thoughts p {
+  font-size: 1.7em;
+}
+
+.thought-header img {
+  width: 100px;
+  height: 100px;
+}
+
+.replies-link {
+  height: 35px;
+  width: 100px;
 }
 
 .single-reply {
