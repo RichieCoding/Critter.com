@@ -87,10 +87,23 @@ mainDiv.addEventListener('click', (e) => {
       e.target.nextElementSibling.parentElement.nextElementSibling.classList.add('parentReplyDiv')
     }; 
 
+    // if (e.target.parentElement.nextElementSibling.classList.contains('parentReplyDiv')) {
+    //   e.target.parentElement.nextElementSibling.classList.remove('parentReplyDiv')
+    // } else {
+    //   e.target.parentElement.nextElementSibling.classList.add('parentReplyDiv')
+    // };
+
   }
   
   if (e.target.classList.contains('comments-link')) {
-    
+    console.log('hello')
+    // debugger
+      if (e.target.parentElement.nextElementSibling.classList.contains('commentDiv')) {
+        e.target.parentElement.nextElementSibling.classList.remove('commentDiv')
+      } else {
+        e.target.parentElement.nextElementSibling.classList.add('commentDiv')
+      };
+
     if (e.target.parentElement.nextElementSibling.nextElementSibling.classList.contains('commentDiv')) {
       e.target.parentElement.nextElementSibling.nextElementSibling.classList.remove('commentDiv')
     } else {
@@ -99,9 +112,11 @@ mainDiv.addEventListener('click', (e) => {
 
 
 
+
   }
   
 }) 
+
 
 
 
