@@ -56,6 +56,15 @@ body {
   overflow: scroll;
 }
 
+#create-thought {
+  border: 1px solid black;
+  background-color: rgb(157, 157, 219);
+  width: 50%;
+  height: 20%;
+  margin: 20px auto;
+  
+}
+
 
 .thoughts {
   border: 1px solid black;
@@ -97,6 +106,11 @@ body {
 
 .commentDiv {
   display: none;
+}
+
+.replyDiv img {
+  width: 40px;
+  height: 40px;
 }
 
 /* #main-thoughts {

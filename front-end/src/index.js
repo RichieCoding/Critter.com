@@ -1,6 +1,8 @@
 const mainDiv = document.querySelector('#main-thoughts')
 
 
+
+
 fetch ("http://localhost:3000/thoughts")
 .then (resp => resp.json())
 .then (renderThoughts)
@@ -14,8 +16,8 @@ function renderThoughts(data) {
     thoughtDiv.id = thought.id;
     thoughtDiv.innerHTML = `
       <div class="thought-header">
-        <img src="${thought.image}">
-        <h3>${thought.user_name}</h3>
+        <h3> <img src="${thought.image}">
+        ${thought.user_name}</h3>
       </div>
       <p>${thought.content}</p>
       <hr>
@@ -47,8 +49,9 @@ function renderThoughts(data) {
           const replyDiv = document.createElement('div')
                 replyDiv.className = 'replyDiv'
                 replyDiv.innerHTML = `
-                  <p>${reply.user_name} Replied:</p>
-                  <p>${reply.content}</p>
+                  <p class="replied-image"> <img src="${reply.user_image}"
+                   class="replied">${reply.user_name} Replied:</p>
+                  <p class="replied-content">${reply.content}</p>
                 `
                 
                 // Appending the different replies to one Div
