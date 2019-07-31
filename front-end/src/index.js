@@ -13,13 +13,16 @@ function renderThoughts(data) {
     thoughtDiv.className = 'thoughts';
     thoughtDiv.id = thought.id;
     thoughtDiv.innerHTML = `
-      <h3>${thought.user.name}</h3>
+      <div class="thought-header">
+        <img src="${thought.user.image}">
+        <h3>${thought.user.name}</h3>
+      </div>
       <p>${thought.content}</p>
       <hr>
       `
       if (thought.replies.length > 0) { 
         // Creating the replies link with the number of replies
-        let pTag = document.createElement("p")
+        let pTag = document.createElement("button")
         pTag.dataset.thoughtId = thought.id
         pTag.className = "replies-link"
         pTag.innerText = `${thought.replies.length} Replies`
