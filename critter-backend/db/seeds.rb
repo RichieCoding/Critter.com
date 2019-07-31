@@ -10,3 +10,4 @@ thought2 = Thought.create(user: racoon, content: "Just got my apple cores taken 
 
 
 reply1 = Reply.create(user: pigeon, thought: thought1, content: "Dumbass I'm bout to take that")
+reply2 = Reply.create(user: pigeon, thought: thought1, content: "I know where you're at!")
