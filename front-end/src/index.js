@@ -16,7 +16,7 @@ function renderThoughts(data) {
     thoughtDiv.id = thought.id;
     thoughtDiv.innerHTML = `
       <div class="thought-header">
-        <h3> <img src="${thought.image}">
+        <h3 class="user-info" id= ${thought.user_id}> <img src="${thought.image}">
         ${thought.user_name}</h3>
       </div>
       <p>${thought.content}</p>
@@ -82,25 +82,19 @@ function renderThoughts(data) {
 }
 
 mainDiv.addEventListener('click', (e) => {
+  // Click Event for reply button
   if (e.target.classList.contains('replies-link')) {
    
     if (e.target.nextElementSibling.parentElement.nextElementSibling.classList.contains('parentReplyDiv')) {
       e.target.nextElementSibling.parentElement.nextElementSibling.classList.remove('parentReplyDiv')
     } else {
       e.target.nextElementSibling.parentElement.nextElementSibling.classList.add('parentReplyDiv')
-    }; 
-
-    // if (e.target.parentElement.nextElementSibling.classList.contains('parentReplyDiv')) {
-    //   e.target.parentElement.nextElementSibling.classList.remove('parentReplyDiv')
-    // } else {
-    //   e.target.parentElement.nextElementSibling.classList.add('parentReplyDiv')
-    // };
-
+    };
   }
-  
+
+  // Click event for comment button
   if (e.target.classList.contains('comments-link')) {
-    console.log('hello')
-    // debugger
+
       if (e.target.parentElement.nextElementSibling.classList.contains('commentDiv')) {
         e.target.parentElement.nextElementSibling.classList.remove('commentDiv')
       } else {
@@ -111,14 +105,57 @@ mainDiv.addEventListener('click', (e) => {
       e.target.parentElement.nextElementSibling.nextElementSibling.classList.remove('commentDiv')
     } else {
       e.target.parentElement.nextElementSibling.nextElementSibling.classList.add('commentDiv')
-    }; 
-
-
-
-
+    };
   }
-  
+
+  if (e.target.classList.contains('user-info')) {
+    fetch(`http://localhost:3000/users/${e.target.id}`)
+    .then(response => response.json())
+    .then(showUserInfo)
+  }
+
 }) 
+
+function showUserInfo(data) {
+  const hello = document.querySelector('#create-thought');
+  debugger
+  const hello2 = document.querySelector('#main-thoughts');
+  hello.style.display = 'none';
+  hello2.style.display = 'none';
+  
+  const encapInfo = document.querySelector(".show-user-info")
+  let headerDiv = document.querySelector(".show-user-header")
+  const thoughtsDiv = document.querySelector('.show-user-thoughts')
+  const showReplies = document.querySelector('.show-user-replies');
+  headerDiv.innerHTML =`
+      
+          <h3> 
+            <img src=${data.image} alt=${data.name}>
+            ${data.name}
+          <h3>
+          <p> Species: ${data.species} </p>
+          <p> Diseases: ${data.diseases} </p>
+          <p> Location: ${data.location} </p>
+          `
+  data.thoughts.forEach(thought => {
+
+    const thoughtsP = document.createElement('p')
+    thoughtsP.innerText = `${thought.content}`
+    thoughtsDiv.append(thoughtsP);
+  })
+
+  data.replies.forEach(reply => {
+    const replyP = document.createElement('p')
+    replyP.innerText = `${reply.content}`
+    showReplies.append(replyP)
+  })
+
+  encapInfo.append(div)
+
+  
+
+}
+
 
 
 

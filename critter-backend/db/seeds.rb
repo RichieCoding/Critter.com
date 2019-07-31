@@ -8,13 +8,29 @@ cat = User.create(name: "Misu", species: "Cat", diseases: "Fleas, Eczema", locat
 rat = User.create(name: "Rat King", species: "Rat", diseases: "Black Plague", location: "14th Street A/C/E Train", image: "https://i.pinimg.com/originals/db/55/82/db5582b3de04879676e707fd66cee242.jpg")
 racoon = User.create(name: "Robber", species: "Racoon", diseases: "None", location: "Your Backyard Trashbin", image: "https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/r/raccoon_thumb.ngsversion.1485815402351.adapt.1900.1.JPG")
 pigeon = User.create(name: "PegLeg", species: "Pigeon", diseases: "Scoliosis", location: "Grand Central Station", image: "https://live.staticflickr.com/1360/1388219411_0ac97a9561_b.jpg" )
+
+turtle = User.create(name: "Tortuga", species: "Turtle", diseases: "Eternal Life", location: "Yoga Class", image: "https://www.nycgovparks.org/pagefiles/88/urban-wildlife-morningside-red-ear-slider-lg.jpg")
+thugPigeon = User.create(name: "OnlyGodCanJudgeMe", species: "Pigeon", diseases: "Loneliness", location: "Deez Streetz", image: "https://inm-baobab-prod-eu-west-1.s3.amazonaws.com/public/inm/media/image/2018/09/11/38208982Fly-1.jpg")
+
+
+
 pigeon2 = User.create(name: "Heather", species: "Pigeon", diseases: "Eye Infection", location: "DUMBO", image: "https://www.allaboutbirds.org/guide/assets/photo/66031271-480px.jpg")
 cat2 = User.create(name: "Kitty123", species: "Cat", diseases: "None", location: "Smoke N' Clouds Smoke Shop And Grocery", image: "https://i1.sndcdn.com/artworks-000438128373-dueu2o-t500x500.jpg")
 rat2 = User.create(name: "StuartNotLittle", species: "Rat", diseases: "Scabies", location: "Penn Station", image: "https://bpca.org.uk/write/MediaUploads/Pages/A-Z/Brown%20Rat/Brown_rat_2.jpg")
 
+
 thought1 = Thought.create(user: racoon, content: "I just found some apple cores!")
 thought2 = Thought.create(user: racoon, content: "Just got my apple cores taken from me, ya'll some haters")
 thought3 = Thought.create(user: pigeon, content: "I'm beyond full right now ")
+
+thought4 = Thought.create(user: thugPigeon, content: "I need to get these brudcrumbs...")
+
+
+Reply.create(user: pigeon, thought: thought1, content: "Dumbass I'm bout to take that")
+Reply.create(user: pigeon, thought: thought1, content: "I know where you're at!")
+Reply.create(user:racoon, thought: thought3, content: "Watch your back")
+Reply.create(user: pigeon, thought: thought4, content: 'Maybe if you left the nest ya damn rat with wings ')
+
 thought4 = Thought.create(user: cat, content: "I was sleeping in the drinks aisle and saw someone steal an Arizona Green Tea, should I say something?")
 thought5 = Thought.create(user: rat, content: "Getting tired of all these other rats attached to my tail")
 thought6 = Thought.create(user: pigeon2, content: "Real eyes realize real lies...")
@@ -34,3 +50,4 @@ reply7 = Reply.create(user: rat, thought: thought9, content: "What's the easiest
 reply7 = Reply.create(user: rat2, thought: thought9, content: "I've been to her bodega before, there's a side emtramce behind the trash cans")
 reply8 = Reply.create(user: pigeon, thought: thought10, content: "wow I love this sentiment. DM me")
 reply9 = Reply.create(user: cat, thought: thought7, content: "Can you please stop posting about our breakup on the timeline...it's embarasing")
+
