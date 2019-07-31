@@ -37,18 +37,29 @@ function renderThoughts(data) {
         fetch(`http://localhost:3000/replies`)
         .then(response => response.json())
         .then(function(data){
+          const replyBtn = document.querySelectorAll('.replies-link')
+          console.log(replyBtn)
           data.forEach(function(reply){
             // Creating different divs for each replies
-            const replyDiv = document.createElement('div')
-            replyDiv.className = 'replyDiv'
-            replyDiv.innerHTML = `
-              <p>${reply.user.name} Replied:</p>
-              <p>${reply.content}</p>
-            `
-            // Appending the different replies to one Div
-            parentReplyDiv.append(replyDiv)
-            // Appending the ParentReplyDiv to 
-            thoughtDiv.append(parentReplyDiv)
+            // debugger
+            replyBtn.forEach(function(replyLink) {
+              // debugger
+              if (reply.thought_id == replyLink.dataset.thoughtId ) {
+              const replyDiv = document.createElement('div')
+              replyDiv.className = 'replyDiv'
+              replyDiv.innerHTML = `
+                <p>${reply.user.name} Replied:</p>
+                <p>${reply.content}</p>
+              `
+              
+              // Appending the different replies to one Div
+              parentReplyDiv.append(replyDiv)
+              // Appending the ParentReplyDiv to 
+              thoughtDiv.append(parentReplyDiv)
+              } 
+
+            })
+            
           })
         })
       }
