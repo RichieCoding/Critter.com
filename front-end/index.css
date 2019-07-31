@@ -26,6 +26,27 @@ body {
   font-size: 3em;
 }
 
+
+/******************************
+      Create Thought Div
+******************************/
+#create-thought {
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid black;
+  background: rgb(157, 157, 219);
+  padding-bottom: 10px;
+  font-size: 1.2em;
+}
+
+#create-thought textarea {
+  height: 70px;
+  width: 450px;
+  font-size: 1em
+}
+
+
 /*------- THOUGHT DIV ------- */
 
 #main-thoughts {
