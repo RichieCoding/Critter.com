@@ -14,55 +14,63 @@ function renderThoughts(data) {
     thoughtDiv.id = thought.id;
     thoughtDiv.innerHTML = `
       <div class="thought-header">
-        <img src="${thought.user.image}">
-        <h3>${thought.user.name}</h3>
+        <img src="${thought.image}">
+        <h3>${thought.user_name}</h3>
       </div>
       <p>${thought.content}</p>
       <hr>
       `
-      if (thought.replies.length > 0) { 
+      
+      if (thought.replies.length > -1) { 
         // Creating the replies link with the number of replies
+        let newDiv = document.createElement("div")
         let pTag = document.createElement("button")
         pTag.dataset.thoughtId = thought.id
         pTag.className = "replies-link"
         pTag.innerText = `${thought.replies.length} Replies`
-        thoughtDiv.append(pTag)
+        newDiv.append(pTag)
+        let replyButton = document.createElement("button")
+        replyButton.dataset.thoughtId = thought.id 
+        replyButton.className = "comments-link"
+        replyButton.innerText = "Reply"
+        newDiv.append(replyButton)
+        thoughtDiv.append(newDiv)
+        
 
         // Parent Div to hold all Replies 
         const parentReplyDiv = document.createElement('div')
         parentReplyDiv.className = 'parentReplyDiv'
         parentReplyDiv.id = `${thought.id}`
 
-        // Fetching the replies routes 
-        fetch(`http://localhost:3000/replies`)
-        .then(response => response.json())
-        .then(function(data){
-          const replyBtn = document.querySelectorAll('.replies-link')
-          console.log(replyBtn)
-          data.forEach(function(reply){
-            // Creating different divs for each replies
-            // debugger
-            replyBtn.forEach(function(replyLink) {
-              // debugger
-              if (reply.thought_id == replyLink.dataset.thoughtId ) {
-              const replyDiv = document.createElement('div')
-              replyDiv.className = 'replyDiv'
-              replyDiv.innerHTML = `
-                <p>${reply.user.name} Replied:</p>
-                <p>${reply.content}</p>
-              `
-              
-              // Appending the different replies to one Div
-              parentReplyDiv.append(replyDiv)
-              // Appending the ParentReplyDiv to 
-              thoughtDiv.append(parentReplyDiv)
-              } 
+        thought.replies.forEach(function(reply) {
 
-            })
-            
-          })
+          const replyDiv = document.createElement('div')
+                replyDiv.className = 'replyDiv'
+                replyDiv.innerHTML = `
+                  <p>${reply.user_name} Replied:</p>
+                  <p>${reply.content}</p>
+                `
+                
+                // Appending the different replies to one Div
+                parentReplyDiv.append(replyDiv)
+                // Appending the ParentReplyDiv to 
+                thoughtDiv.append(parentReplyDiv)
+
         })
+
+        const replyFormDiv = document.createElement('div')
+        replyFormDiv.className = 'commentDiv'
+        replyFormDiv.innerHTML = `
+          <textarea>
+
+          </textarea>
+          <button type="submit"> Submit </button>
+        `
+        thoughtDiv.append(replyFormDiv)
+        // const replyForm = document.createElement("text-area")
+
       }
+      
 
       // Append the different thoughts to our main body div
       mainDiv.append(thoughtDiv)
@@ -72,15 +80,30 @@ function renderThoughts(data) {
 
 mainDiv.addEventListener('click', (e) => {
   if (e.target.classList.contains('replies-link')) {
-    const replyLink = document.getElementById(`${e.target.id}`)
-    // const hiddenDiv = document.querySelector('.reply')
-    if (e.target.nextElementSibling.classList.contains('parentReplyDiv')) {
-      e.target.nextElementSibling.classList.remove('parentReplyDiv')
+   
+    if (e.target.nextElementSibling.parentElement.nextElementSibling.classList.contains('parentReplyDiv')) {
+      e.target.nextElementSibling.parentElement.nextElementSibling.classList.remove('parentReplyDiv')
     } else {
-      e.target.nextElementSibling.classList.add('parentReplyDiv')
-    }
+      e.target.nextElementSibling.parentElement.nextElementSibling.classList.add('parentReplyDiv')
+    }; 
+
   }
+  
+  if (e.target.classList.contains('comments-link')) {
+    
+    if (e.target.parentElement.nextElementSibling.nextElementSibling.classList.contains('commentDiv')) {
+      e.target.parentElement.nextElementSibling.nextElementSibling.classList.remove('commentDiv')
+    } else {
+      e.target.parentElement.nextElementSibling.nextElementSibling.classList.add('commentDiv')
+    }; 
+
+
+
+  }
+  
 }) 
+
+
 
 
 

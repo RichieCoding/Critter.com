@@ -70,6 +70,7 @@ body {
 .parentReplyDiv {
   display: none;
 }
-/* .replyDiv {
+
+.commentDiv {
   display: none;
-} */
+}
