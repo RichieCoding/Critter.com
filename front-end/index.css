@@ -53,6 +53,11 @@ body {
 
 }
 
+.reply-comment-added img {
+  width: 40px;
+  height: 40px;
+}
+
 
 /******************************
       Create Thought Div

@@ -32,7 +32,7 @@ function renderNewThought(thought) {
 
   const thoughtDiv = document.createElement('div');
     thoughtDiv.className = 'thoughts';
-    thoughtDiv.id = thought.id;
+    // thoughtDiv.id = thought.id;
     thoughtDiv.innerHTML = `
       <div class="thought-header">
         <h3 class="user-info" id= ${thought.user_id}> <img src="${thought.image}">
@@ -44,7 +44,7 @@ function renderNewThought(thought) {
       let newDiv = document.createElement("div")
         newDiv.className = "container-div"
         let pTag = document.createElement("button")
-        pTag.dataset.thoughtId = thought.id
+        // pTag.dataset.thoughtId = thought.id
         pTag.className = "replies-link"
         pTag.innerText = `0 Replies`
         newDiv.append(pTag)
@@ -236,27 +236,52 @@ mainDiv.addEventListener('click', (e) => {
 
 function renderSingleReply(reply) {
   console.log(reply)
+  const parentDiv = document.getElementById(`${reply.thought_id}`)
+  // debugger
+  const headerDiv = document.querySelector('.container-div')
+  const whereIWantToAppendTo = parentDiv.lastChild.previousElementSibling
+  // const whereIWantToAppendTo = headerDiv.nextElementSibling
+  const commentDiv = document.createElement('div')
+  const hello22 = document.createElement('p')
+  commentDiv.className = 'reply-comment-added'
+  // debugger
+  commentDiv.innerHTML = `
+    <img src="${reply.user_image} style="height: 100px; width: 100px;">
+    <p>${reply.user_name} Replied:</p>
+    <p>${reply.content}</p>
+  `
+  let deleteReply = document.createElement("button")
+  deleteReply.className = "delete-reply-button"
+  deleteReply.dataset.id = reply.id 
+  deleteReply.innerText = "Delete Reply"
+  commentDiv.append(deleteReply)
 
-  const parentReplyDiv = document.createElement('div')
-        parentReplyDiv.className = 'parentReplyDiv'
-        parentReplyDiv.id = `${reply.thought_id}`
+  // Adds Number of replies
+  let thoughtDiv = document.getElementById(`${reply.thought_id}`)
+  thoughtDiv.querySelector("span").innerText = parseInt(thoughtDiv.querySelector("span").innerText) + 1
 
-  const replyDiv = document.createElement('div')
-                replyDiv.className = 'replyDiv'
-                replyDiv.innerHTML = `
-                  <p class="replied-image"> <img src="${reply.user_image}"
-                   class="replied">${reply.user_name} Replied:</p>
-                  <p class="replied-content">${reply.content}</p>
-                `
+  whereIWantToAppendTo.append(commentDiv) 
+  // debugger
+  // const parentReplyDiv = document.createElement('div')
+  //       parentReplyDiv.className = 'parentReplyDiv'
+  //       parentReplyDiv.id = `${reply.thought_id}`
+
+  // const replyDiv = document.createElement('div')
+  //               replyDiv.className = 'replyDiv'
+  //               replyDiv.innerHTML = `
+  //                 <p class="replied-image"> <img src="${reply.user_image}"
+  //                  class="replied">${reply.user_name} Replied:</p>
+  //                 <p class="replied-content">${reply.content}</p>
+  //               `
                 
-                // Appending the different replies to one Div
-                parentReplyDiv.append(replyDiv)
-                // Appending the ParentReplyDiv to 
-                let thoughtDiv = document.getElementById(`${reply.thought_id}`)
+  //               // Appending the different replies to one Div
+  //               parentReplyDiv.append(replyDiv)
+  //               // Appending the ParentReplyDiv to 
+  //               let thoughtDiv = document.getElementById(`${reply.thought_id}`)
                
-                thoughtDiv.append(parentReplyDiv)
-                thoughtDiv.querySelector("span").innerText = parseInt(thoughtDiv.querySelector("span").innerText) + 1
-                // location.reload() 
+  //               thoughtDiv.append(parentReplyDiv)
+  //               thoughtDiv.querySelector("span").innerText = parseInt(thoughtDiv.querySelector("span").innerText) + 1
+  //               // location.reload() 
 
 } 
 
