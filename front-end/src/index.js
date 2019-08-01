@@ -2,7 +2,6 @@ const mainDiv = document.querySelector('#main-thoughts')
 
 
 
-
 fetch ("http://localhost:3000/thoughts")
 .then (resp => resp.json())
 .then (renderThoughts)
@@ -114,6 +113,7 @@ mainDiv.addEventListener('click', (e) => {
     .then(showUserInfo)
   }
 
+
 }) 
 
 function showUserInfo(data) {
@@ -155,6 +155,26 @@ function showUserInfo(data) {
   
 
 }
+
+const submitButton = document.querySelector("#create-thought")
+  submitButton.addEventListener("submit", function(e) {
+    e.preventDefault()
+    let input = e.target.querySelector("textarea").value
+    
+    fetch("http://localhost:3000/thoughts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        "user_id": 2,
+        "content": input
+      })
+    }).then(response => response.json())
+    .then(console.log)
+    .catch(e => console.log(e))
+  })
 
 
 
