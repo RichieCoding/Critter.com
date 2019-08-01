@@ -103,13 +103,13 @@ function renderThoughts(data) {
         let pTag = document.createElement("button")
         pTag.dataset.thoughtId = thought.id
         pTag.className = "replies-link"
-        pTag.innerText = `${thought.replies.length} Replies`
+        pTag.innerHTML = `<span class="num"> ${thought.replies.length} </span> Replies `
         newDiv.append(pTag)
-        let replyButton = document.createElement("button")
-        replyButton.dataset.thoughtId = thought.id 
-        replyButton.className = "comments-link"
-        replyButton.innerText = "Reply"
-        newDiv.append(replyButton)
+        // let replyButton = document.createElement("button")
+        // replyButton.dataset.thoughtId = thought.id 
+        // replyButton.className = "comments-link"
+        // replyButton.innerText = "Reply"
+        // newDiv.append(replyButton)
         thoughtDiv.append(newDiv)
 
         if (thought.user_id === 7) {
@@ -144,10 +144,10 @@ function renderThoughts(data) {
         })
 
         const replyFormDiv = document.createElement('div')
-        replyFormDiv.className = 'commentDiv'
+        replyFormDiv.className = 'comment-div'
         replyFormDiv.innerHTML = `
           <textarea class= "commentText"></textarea>
-          <button class="commentBtn" type="button"> Submit </button>
+          <button class="commentBtn" type="button"> Add A Reply </button>
         `
         thoughtDiv.append(replyFormDiv)
         // const replyForm = document.createElement("text-area")
@@ -164,53 +164,34 @@ function renderThoughts(data) {
 mainDiv.addEventListener('click', (e) => {
   // Click Event for reply button
   if (e.target.classList.contains('replies-link')) {
+    debugger 
+
+    if (e.target.parentElement.nextElementSibling.classList.contains("parentReplyDiv")) {
+      e.target.parentElement.nextElementSibling.classList.remove("parentReplyDiv") 
+    }
+    else {
+      e.target.parentElement.parentElement.children[4].classList.add("parentReplyDiv")
+    }
    
-    if (e.target.nextElementSibling.parentElement.nextElementSibling.classList.contains('parentReplyDiv')) {
-      e.target.nextElementSibling.parentElement.nextElementSibling.classList.remove('parentReplyDiv')
-      
-    } else {
-      e.target.nextElementSibling.parentElement.nextElementSibling.classList.add('parentReplyDiv')
-    };
   }
 
   // Click event for comment button
-  if (e.target.classList.contains('comments-link')) {
+  if (e.target.className === "commentBtn") {
+    let input = e.target.parentElement.querySelector("textarea").value 
 
-      if (e.target.parentElement.nextElementSibling.classList.contains('commentDiv')) {
-        e.target.parentElement.nextElementSibling.classList.remove('commentDiv')
-
-        // Events for textarea and submit for reply
-        const commentText = document.querySelector('.commentText')
-        const commentBtn = document.querySelector('.commentBtn')
-        commentBtn.addEventListener('click', (event) => {
-          fetch('http://localhost:3000/replies', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-              "user_id": e.target.dataset.thoughtId,
-              "content": commentText.value,
-              
-            }) 
-          })
-          .then(resp => resp.json())
-          .then(console.log)
-            
-          
-        })
-        
-      } else {
-        e.target.parentElement.nextElementSibling.classList.add('commentDiv')
-      };
-
-      if (e.target.parentElement.nextElementSibling.nextElementSibling.classList.contains('commentDiv')) {
-        e.target.parentElement.nextElementSibling.nextElementSibling.classList.remove('commentDiv')
-        console.log('can hit submit')
-      } else {
-        e.target.parentElement.nextElementSibling.nextElementSibling.classList.add('commentDiv')
-      };
+    fetch("http://localhost:3000/replies", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        "user_id": 7,
+        "thought_id": e.target.parentElement.parentElement.id,
+        "content": input 
+      })
+    }).then(response => response.json())
+    .then(renderSingleReply)
   }
 
 
@@ -231,7 +212,31 @@ mainDiv.addEventListener('click', (e) => {
 }) 
 
 
+function renderSingleReply(reply) {
+  console.log(reply)
 
+  const parentReplyDiv = document.createElement('div')
+        parentReplyDiv.className = 'parentReplyDiv'
+        parentReplyDiv.id = `${reply.thought_id}`
+
+  const replyDiv = document.createElement('div')
+                replyDiv.className = 'replyDiv'
+                replyDiv.innerHTML = `
+                  <p class="replied-image"> <img src="${reply.user_image}"
+                   class="replied">${reply.user_name} Replied:</p>
+                  <p class="replied-content">${reply.content}</p>
+                `
+                
+                // Appending the different replies to one Div
+                parentReplyDiv.append(replyDiv)
+                // Appending the ParentReplyDiv to 
+                let thoughtDiv = document.getElementById(`${reply.thought_id}`)
+               
+                thoughtDiv.append(parentReplyDiv)
+                thoughtDiv.querySelector("span").innerText = parseInt(thoughtDiv.querySelector("span").innerText) + 1
+                // location.reload() 
+
+} 
 
 navBar.addEventListener('click', (event) => {
   const shareThought = document.querySelector('#create-thought')
