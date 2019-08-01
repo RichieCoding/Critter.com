@@ -11,7 +11,7 @@ pigeon = User.create(name: "PegLeg", species: "Pigeon", diseases: "Scoliosis", l
 
 turtle = User.create(name: "Tortuga", species: "Turtle", diseases: "Eternal Life", location: "Yoga Class", image: "https://www.nycgovparks.org/pagefiles/88/urban-wildlife-morningside-red-ear-slider-lg.jpg")
 thugPigeon = User.create(name: "OnlyGodCanJudgeMe", species: "Pigeon", diseases: "Loneliness", location: "Deez Streetz", image: "https://inm-baobab-prod-eu-west-1.s3.amazonaws.com/public/inm/media/image/2018/09/11/38208982Fly-1.jpg")
-
+dolphin = User.create(name: "HudsonRiverDolphin", species: "Dolphin", diseases: "Being Beautiful", location: "Hudson River", image: "https://cdn.cnn.com/cnnnext/dam/assets/180828121744-dolphin-stock-photo-2-full-169.jpg")
 
 
 pigeon2 = User.create(name: "Heather", species: "Pigeon", diseases: "Eye Infection", location: "DUMBO", image: "https://www.allaboutbirds.org/guide/assets/photo/66031271-480px.jpg")
