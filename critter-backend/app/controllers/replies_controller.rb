@@ -20,6 +20,11 @@ class RepliesController < ApplicationController
     render json: reply, include: [:user]
   end
 
+  def destroy
+    reply = Reply.find(params[:id])
+    reply.destroy 
+  end
+
   private
 
   def reply_params
