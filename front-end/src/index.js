@@ -5,7 +5,6 @@ const navBar = document.querySelector('#nav-bar')
 function createThought() {
   const create = document.querySelector('#create-thought') 
   create.addEventListener('click', (event) => {
-    // debugger
     if (event.target.classList.contains('submit-button')) {
       console.log('hello')
     }
