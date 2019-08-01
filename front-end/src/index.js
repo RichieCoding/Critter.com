@@ -1,4 +1,5 @@
 const mainDiv = document.querySelector('#main-thoughts')
+const navBar = document.querySelector('#nav-bar')
 
 
 
@@ -115,6 +116,31 @@ mainDiv.addEventListener('click', (e) => {
   }
 
 }) 
+
+navBar.addEventListener('click', (event) => {
+  const shareThought = document.querySelector('#create-thought')
+
+  if (event.target.classList.contains('share-thought-link')) {
+    if (shareThought.style.display === 'none') {
+      shareThought.style.display = 'block';
+    } else {
+      shareThought.style.display = 'none';
+    }
+  }
+
+  if (event.target.classList.contains('share-thought-text')) {
+    if (shareThought.style.display === 'none') {
+      shareThought.style.display = 'block';
+    } else {
+      shareThought.style.display = 'none';
+    }
+  }
+
+  
+
+})
+
+
 
 
 // Show user profile function
