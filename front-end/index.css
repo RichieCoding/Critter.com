@@ -35,6 +35,7 @@ body {
   color: white;
   border: 1px solid white;
   padding: 15px;
+  user-select: none
 }
 
 .share-thought-link:hover {
