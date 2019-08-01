@@ -5,9 +5,21 @@ const navBar = document.querySelector('#nav-bar')
 function createThought() {
   const create = document.querySelector('#create-thought') 
   create.addEventListener('click', (event) => {
-    // debugger
     if (event.target.classList.contains('submit-button')) {
-      console.log('hello')
+      let input = event.target.parentElement.querySelector("textarea").value 
+      
+      fetch("http://localhost:3000/thoughts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "user_id": 7,
+          "content": input
+        })
+      }).then(response => response.json())
+      .then(console.log)
     }
   })
 }
@@ -203,25 +215,25 @@ function showUserInfo(data) {
 
 }
 
-const submitButton = document.querySelector("#create-thought")
-  submitButton.addEventListener("submit", function(e) {
-    e.preventDefault()
-    let input = e.target.querySelector("textarea").value
+// const submitButton = document.querySelector("#create-thought")
+//   submitButton.addEventListener("click", function(e) {
+//     e.preventDefault()
+//     let input = e.target.querySelector("textarea").value
     
-    fetch("http://localhost:3000/thoughts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        "user_id": 2,
-        "content": input
-      })
-    }).then(response => response.json())
-    .then(console.log)
-    .catch(e => console.log(e))
-  })
+//     fetch("http://localhost:3000/thoughts", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Accept": "application/json"
+//       },
+//       body: JSON.stringify({
+//         "user_id": 2,
+//         "content": input
+//       })
+//     }).then(response => response.json())
+//     .then(console.log)
+//     .catch(e => console.log(e))
+//   })
 
 
 

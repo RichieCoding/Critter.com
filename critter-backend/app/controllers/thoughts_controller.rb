@@ -7,12 +7,17 @@ class ThoughtsController < ApplicationController
 
   def new
     thought = Thought.new
-    render json: thought, include: [:user]
   end
 
   def create
-    thought = Thought.create(params)
+    thought = Thought.create(thought_params)
     render json: thought, include: [:user]
+  end
+
+  private 
+
+  def thought_params
+    params.require(:thought).permit(:user_id, :content)
   end
 
 end
