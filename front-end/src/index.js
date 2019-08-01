@@ -52,12 +52,7 @@ function renderNewThought(thought) {
         pTag.className = "replies-link"
         pTag.innerText = `0 Replies`
         newDiv.append(pTag)
-        let replyButton = document.createElement("button")
-        replyButton.dataset.thoughtId = thought.id 
-        replyButton.className = "comments-link"
-        replyButton.innerText = "Reply"
-        newDiv.append(replyButton)
-        thoughtDiv.append(newDiv)
+
 
         if (thought.user_id === 7) {
           let deleteButton = document.createElement("button")
@@ -66,6 +61,33 @@ function renderNewThought(thought) {
           deleteButton.className = "delete-thought-button"
           newDiv.append(deleteButton)
         }  
+       
+        thoughtDiv.append(newDiv)
+
+        const parentReplyDiv = document.createElement('div')
+        parentReplyDiv.className = 'parentReplyDiv'
+        parentReplyDiv.id = `${thought.id}`
+
+        
+
+          
+        const replyDiv = document.createElement('div')
+        replyDiv.className = 'replyDiv'
+         
+                // Appending the different replies to one Div
+                parentReplyDiv.append(replyDiv)
+                // Appending the ParentReplyDiv to 
+                thoughtDiv.append(parentReplyDiv)
+
+        
+
+        const replyFormDiv = document.createElement('div')
+        replyFormDiv.className = 'comment-div'
+        replyFormDiv.innerHTML = `
+          <textarea class= "commentText"></textarea>
+          <button class="commentBtn" type="button"> Add A Reply </button>
+        `
+        thoughtDiv.append(replyFormDiv)
 
       // Append the different thoughts to our main body div
 

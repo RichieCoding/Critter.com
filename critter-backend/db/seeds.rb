@@ -54,9 +54,10 @@ turtle.thoughts.create(content: "there's something so relaxing about sitting on 
 thugPigeon.thoughts.create(content: "if you’re arguing loudly on your phone in public please put it on speaker. i need to hear both sides of the story to know whose side i’m on.")
 thought30 = pigeon.thoughts.create(content: "Real Recognize Real And You Looking Like A Stranger.")
 rat2.thoughts.create(content: "what if we kissed in the fridge beside the broccoli? ahaha jk... unless?")
+turtle.thoughts.create(content: "giant squid have nothing they want to share with us and I respect that so much")
 catthought = cat2.thoughts.create(content: "I hate andrew lloyd webber. What the hell is jellicle? ???")
 pigeon2.thoughts.create(content: "Y’all using FaceApp but won’t get off this app and face reality!")
-turtle.thoughts.create(content: "giant squid have nothing they want to share with us and I respect that so much")
+racoon.thoughts.create(content: "Haven't been online for a while, i had to lay low due to an unfortunate incident")
 
 Reply.create(user: racoon, thought: thought30, content: "fake deep lmao")
 Reply.create(user: turtle, thought: catthought, content: "don't knock it till you try it!!! ")
