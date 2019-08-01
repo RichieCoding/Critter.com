@@ -19,13 +19,53 @@ function createThought() {
           "content": input
         })
       }).then(response => response.json())
-      .then(console.log)
+      .then(renderNewThought)
     }
   })
 }
 
 
+// adds a new thought to the page
+function renderNewThought(thought) {
+  console.log(thought)
 
+  const thoughtDiv = document.createElement('div');
+    thoughtDiv.className = 'thoughts';
+    thoughtDiv.id = thought.id;
+    thoughtDiv.innerHTML = `
+      <div class="thought-header">
+        <h3 class="user-info" id= ${thought.user_id}> <img src="${thought.image}">
+        ${thought.user_name}</h3>
+      </div>
+      <p>${thought.content}</p>
+      <hr>
+      `
+      let newDiv = document.createElement("div")
+        newDiv.className = "container-div"
+        let pTag = document.createElement("button")
+        pTag.dataset.thoughtId = thought.id
+        pTag.className = "replies-link"
+        pTag.innerText = `0 Replies`
+        newDiv.append(pTag)
+        let replyButton = document.createElement("button")
+        replyButton.dataset.thoughtId = thought.id 
+        replyButton.className = "comments-link"
+        replyButton.innerText = "Reply"
+        newDiv.append(replyButton)
+        thoughtDiv.append(newDiv)
+
+        if (thought.user_id === 7) {
+          let deleteButton = document.createElement("button")
+          deleteButton.innerText = "Delete Thought"
+          deleteButton.dataset.id = thought.id 
+          deleteButton.className = "delete-thought-button"
+          newDiv.append(deleteButton)
+        }  
+
+      // Append the different thoughts to our main body div
+
+    mainDiv.prepend(thoughtDiv)
+}
 
 
 
@@ -54,9 +94,12 @@ function renderThoughts(data) {
       <hr>
       `
       
+
+
       if (thought.replies.length > -1) { 
         // Creating the replies link with the number of replies
         let newDiv = document.createElement("div")
+        newDiv.className = "container-div"
         let pTag = document.createElement("button")
         pTag.dataset.thoughtId = thought.id
         pTag.className = "replies-link"
@@ -68,6 +111,14 @@ function renderThoughts(data) {
         replyButton.innerText = "Reply"
         newDiv.append(replyButton)
         thoughtDiv.append(newDiv)
+
+        if (thought.user_id === 7) {
+          let deleteButton = document.createElement("button")
+          deleteButton.innerText = "Delete Thought"
+          deleteButton.dataset.id = thought.id 
+          deleteButton.className = "delete-thought-button"
+          newDiv.append(deleteButton)
+        }  
         
 
         // Parent Div to hold all Replies 
@@ -169,6 +220,13 @@ mainDiv.addEventListener('click', (e) => {
     .then(showUserInfo)
   }
 
+  if (e.target.classList.contains("delete-thought-button")) {
+    fetch(`http://localhost:3000/thoughts/${e.target.dataset.id}`, {
+      method: "DELETE",
+    })
+    .then(e.target.parentNode.parentNode.remove())
+  }
+
 
 }) 
 
@@ -190,6 +248,8 @@ navBar.addEventListener('click', (event) => {
       shareThought.style.display = 'none';
     }
   }
+
+
 
 })
 

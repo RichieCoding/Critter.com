@@ -123,6 +123,11 @@ body {
   width: 100px;
 }
 
+.delete-thought-button {
+  height: 35px;
+  width: 100px;
+}
+
 
 .single-reply {
   background-color: lightblue;
