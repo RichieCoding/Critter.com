@@ -203,6 +203,9 @@ mainDiv.addEventListener('click', (e) => {
 
 }) 
 
+
+
+
 navBar.addEventListener('click', (event) => {
   const shareThought = document.querySelector('#create-thought')
 
