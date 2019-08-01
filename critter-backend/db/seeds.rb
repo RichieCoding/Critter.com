@@ -37,11 +37,9 @@ thought6 = Thought.create(user: pigeon2, content: "Real eyes realize real lies..
 thought7 = Thought.create(user: cat2, content: "strangest thing i ever did was think you gave a crap about me...😔💔💯")
 thought8 = Thought.create(user: rat2, content: "I odn't fight for crumbs, crumbs fight for me")
 thought9 = Thought.create(user: cat, content: "We're throwing out a bunch of donuts at the end of the day if any of you want to take some home")
-thought10 = Thought.create(user: pigeon2, content: "Live, Laugh, love")
+thought10 = Thought.create(user: pigeon2, content: "Live, Laugh, Love")
 thought11 = Thought.create(user: rat, content: "Love the smell of warm garbage juice in the morning!")
 
-reply1 = Reply.create(user: pigeon, thought: thought1, content: "Dumbass I'm bout to take that")
-reply2 = Reply.create(user: pigeon, thought: thought1, content: "I know where you're at!")
 reply3 = Reply.create(user:racoon, thought: thought3, content: "Watch your back")
 reply4 = Reply.create(user: pigeon, thought: thought6, content: "Damn this is so deep...are you single?")
 reply5 = Reply.create(user: cat, thought: thought6, content: "Lmao are you serious? I'm about to eat you")

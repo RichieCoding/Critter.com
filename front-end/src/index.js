@@ -1,5 +1,22 @@
 const mainDiv = document.querySelector('#main-thoughts')
+const navBar = document.querySelector('#nav-bar')
 
+// Adds Event Listener For Posting A Thought
+function createThought() {
+  const create = document.querySelector('#create-thought') 
+  create.addEventListener('click', (event) => {
+    // debugger
+    if (event.target.classList.contains('submit-button')) {
+      console.log('hello')
+    }
+  })
+}
+
+
+
+
+
+createThought()
 
 
 fetch ("http://localhost:3000/thoughts")
@@ -116,42 +133,72 @@ mainDiv.addEventListener('click', (e) => {
 
 }) 
 
+navBar.addEventListener('click', (event) => {
+  const shareThought = document.querySelector('#create-thought')
+
+  if (event.target.classList.contains('share-thought-link')) {
+    if (shareThought.style.display === 'none') {
+      shareThought.style.display = 'block';
+    } else {
+      shareThought.style.display = 'none';
+    }
+  }
+
+  if (event.target.classList.contains('share-thought-text')) {
+    if (shareThought.style.display === 'none') {
+      shareThought.style.display = 'block';
+    } else {
+      shareThought.style.display = 'none';
+    }
+  }
+
+  
+
+})
+
+
+
+
+// Show user profile function
 function showUserInfo(data) {
-  const hello = document.querySelector('#create-thought');
-  debugger
-  const hello2 = document.querySelector('#main-thoughts');
-  hello.style.display = 'none';
-  hello2.style.display = 'none';
+  // const hello = document.querySelector('#create-thought');
+  // debugger
+  // const hello2 = document.querySelector('#main-thoughts');
+  // hello.style.display = 'none';
+  // hello2.style.display = 'none';
+
+  const hello = document.querySelector('.modal')
+  hello.style.display = 'block';
+  window.onclick = function(event) {
+    if (event.target == hello) {
+        hello.style.display = "none";
+    }
+  }
   
   const encapInfo = document.querySelector(".show-user-info")
   let headerDiv = document.querySelector(".show-user-header")
   const thoughtsDiv = document.querySelector('.show-user-thoughts')
   const showReplies = document.querySelector('.show-user-replies');
   headerDiv.innerHTML =`
-      
-          <h3> 
-            <img src=${data.image} alt=${data.name}>
-            ${data.name}
-          <h3>
+          <h3>${data.name}</h3>
+          <img src=${data.image} alt=${data.name}>
           <p> Species: ${data.species} </p>
           <p> Diseases: ${data.diseases} </p>
           <p> Location: ${data.location} </p>
           `
-  data.thoughts.forEach(thought => {
+  // data.thoughts.forEach(thought => {
+  //   const thoughtsP = document.createElement('p')
+  //   thoughtsP.innerText = `${thought.content}`
+  //   thoughtsDiv.append(thoughtsP);
+  // })
 
-    const thoughtsP = document.createElement('p')
-    thoughtsP.innerText = `${thought.content}`
-    thoughtsDiv.append(thoughtsP);
-  })
-
-  data.replies.forEach(reply => {
-    const replyP = document.createElement('p')
-    replyP.innerText = `${reply.content}`
-    showReplies.append(replyP)
-  })
+  // data.replies.forEach(reply => {
+  //   const replyP = document.createElement('p')
+  //   replyP.innerText = `${reply.content}`
+  //   showReplies.append(replyP)
+  // })
 
   encapInfo.append(div)
-
   
 
 }
@@ -181,43 +228,3 @@ const submitButton = document.querySelector("#create-thought")
 
 
 
-
-
-
-// function renderReplies(target) {
-//   // console.log(target.dataset.replyId)
-
-//   fetch(`http://localhost:3000/replies`)
-//   .then(response => response.json())
-//   .then(function(data){
-//     data.forEach(function(reply) {
-//       if (reply.thought_id == target.dataset.thoughtId ) {
-//         const parentDiv = document.getElementById(`${target.dataset.thoughtId}`)
-//         const replyDiv = document.createElement('div');
-//         replyDiv.className = 'replyDiv';
-//         replyDiv.innerHTML = `
-//         <div class="single-reply">
-//         <p> ${reply.user.name} replied: </p>
-//           <p>${reply.content}</p>
-//           </div>
-//         `
-//         parentDiv.append(replyDiv)
-//         console.log("hi")
-//         debugger
-//       }
-
-//     })
-
-    // for (let i = 0; i < data.length; i++) {
-    //   console.log(data[i].content)
-    // }
-
-    // // for (const reply in data) {
-    // //   console.log(reply)
-    // //   // replyDiv.innerHTML = `
-    // //   //   <p>${reply.content}</p
-    // //   // `
-    // // }
-//     // parentDiv.append(replyDiv)
-//   })
-// }
