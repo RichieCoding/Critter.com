@@ -53,6 +53,12 @@ function renderNewThought(thought) {
         pTag.innerText = `0 Replies`
         newDiv.append(pTag)
 
+        // let replyButton = document.createElement("button")
+        // replyButton.dataset.thoughtId = thought.id 
+        // replyButton.className = "comments-link"
+        // replyButton.innerText = "Reply"
+        // newDiv.append(replyButton)
+        thoughtDiv.append(newDiv)
 
         if (thought.user_id === 7) {
           let deleteButton = document.createElement("button")
