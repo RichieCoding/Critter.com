@@ -5,6 +5,10 @@ class ThoughtsController < ApplicationController
     render json: thoughts, include: [:replies, :user]
   end
 
+  def show
+    thought = Thought.find(params{:id})
+  end
+
   def new
     thought = Thought.new
   end
@@ -12,6 +16,11 @@ class ThoughtsController < ApplicationController
   def create
     thought = Thought.create(thought_params)
     render json: thought, include: [:user]
+  end
+
+  def destroy
+    thought = Thought.find(params[:id])
+    thought.destroy 
   end
 
   private 
