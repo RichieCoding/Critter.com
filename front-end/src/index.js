@@ -7,6 +7,7 @@ function createThought() {
   create.addEventListener('click', (event) => {
     if (event.target.classList.contains('submit-button')) {
       let input = event.target.parentElement.querySelector("textarea").value 
+      event.target.parentElement.querySelector("textarea").value = ""
       
       fetch("http://localhost:3000/thoughts", {
         method: "POST",
@@ -128,14 +129,23 @@ function renderThoughts(data) {
 
         thought.replies.forEach(function(reply) {
 
+          
           const replyDiv = document.createElement('div')
-                replyDiv.className = 'replyDiv'
-                replyDiv.innerHTML = `
-                  <p class="replied-image"> <img src="${reply.user_image}"
-                   class="replied">${reply.user_name} Replied:</p>
-                  <p class="replied-content">${reply.content}</p>
-                `
-                
+          replyDiv.className = 'replyDiv'
+          replyDiv.innerHTML = `
+          <p class="replied-image"> <img src="${reply.user_image}"
+          class="replied">${reply.user_name} Replied:</p>
+          <p class="replied-content">${reply.content}</p>
+          `
+          
+          if (reply.user_id === 7) {
+            let deleteReply = document.createElement("button")
+            deleteReply.className = "delete-reply-button"
+            deleteReply.dataset.id = reply.id 
+            deleteReply.innerText = "Delete Reply"
+            replyDiv.append(deleteReply)
+            
+          }
                 // Appending the different replies to one Div
                 parentReplyDiv.append(replyDiv)
                 // Appending the ParentReplyDiv to 
@@ -164,7 +174,6 @@ function renderThoughts(data) {
 mainDiv.addEventListener('click', (e) => {
   // Click Event for reply button
   if (e.target.classList.contains('replies-link')) {
-    debugger 
 
     if (e.target.parentElement.nextElementSibling.classList.contains("parentReplyDiv")) {
       e.target.parentElement.nextElementSibling.classList.remove("parentReplyDiv") 
@@ -175,9 +184,22 @@ mainDiv.addEventListener('click', (e) => {
    
   }
 
+  // adds event for delete reply button
+  if (e.target.className === "delete-reply-button") {
+   
+    e.target.parentElement.parentElement.parentElement.querySelector("span").innerText = parseInt(e.target.parentElement.parentElement.parentElement.querySelector("span").innerText) - 1
+    let id = e.target.dataset.id 
+    fetch(`http://localhost:3000/replies/${id}`, {
+      method: "DELETE"
+    })
+    .then(e.target.parentElement.remove())
+    
+  }
+
   // Click event for comment button
   if (e.target.className === "commentBtn") {
     let input = e.target.parentElement.querySelector("textarea").value 
+    e.target.parentElement.querySelector("textarea").value = ""
 
     fetch("http://localhost:3000/replies", {
       method: "POST",
@@ -237,6 +259,7 @@ function renderSingleReply(reply) {
                 // location.reload() 
 
 } 
+
 
 navBar.addEventListener('click', (event) => {
   const shareThought = document.querySelector('#create-thought')
