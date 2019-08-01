@@ -52,11 +52,11 @@ function renderNewThought(thought) {
         pTag.className = "replies-link"
         pTag.innerText = `0 Replies`
         newDiv.append(pTag)
-        let replyButton = document.createElement("button")
-        replyButton.dataset.thoughtId = thought.id 
-        replyButton.className = "comments-link"
-        replyButton.innerText = "Reply"
-        newDiv.append(replyButton)
+        // let replyButton = document.createElement("button")
+        // replyButton.dataset.thoughtId = thought.id 
+        // replyButton.className = "comments-link"
+        // replyButton.innerText = "Reply"
+        // newDiv.append(replyButton)
         thoughtDiv.append(newDiv)
 
         if (thought.user_id === 7) {
