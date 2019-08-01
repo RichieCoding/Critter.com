@@ -140,6 +140,11 @@ body {
 
 .commentDiv {
   display: none;
+ 
+}
+
+.comment-div {
+  padding: 20px; 
 }
 
 .replyDiv img {
@@ -147,6 +152,18 @@ body {
   height: 40px;
 }
 
+.replyDiv {
+  padding: 15px;
+  font-size: 12px;
+}
+
+button {
+  padding: 2px;
+
+}
+button:hover {
+  color: red;
+}
 
 
 /******************************

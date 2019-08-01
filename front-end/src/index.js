@@ -23,7 +23,11 @@ function createThought() {
       .then(renderNewThought)
     }
   })
+ 
 }
+
+
+
 
 
 // adds a new thought to the page
@@ -234,31 +238,41 @@ mainDiv.addEventListener('click', (e) => {
 }) 
 
 
-function renderSingleReply(reply) {
-  console.log(reply)
+// function renderSingleReply(reply) {
+//   console.log(reply)
 
-  const parentReplyDiv = document.createElement('div')
-        parentReplyDiv.className = 'parentReplyDiv'
-        parentReplyDiv.id = `${reply.thought_id}`
+//   const parentReplyDiv = document.createElement('div')
+//         // parentReplyDiv.className = 'parentReplyDiv'
+//         parentReplyDiv.id = `${reply.thought_id}`
+        
+//         let commentsPart = document.querySelector(".comment-div")
+        
 
-  const replyDiv = document.createElement('div')
-                replyDiv.className = 'replyDiv'
-                replyDiv.innerHTML = `
-                  <p class="replied-image"> <img src="${reply.user_image}"
-                   class="replied">${reply.user_name} Replied:</p>
-                  <p class="replied-content">${reply.content}</p>
-                `
+//   const replyDiv = document.createElement('div')
+//                 replyDiv.className = 'replyDiv'
+//                 replyDiv.innerHTML = `
+//                   <p class="replied-image"> <img src="${reply.user_image}"
+//                    class="replied">${reply.user_name} Replied:</p>
+//                   <p class="replied-content">${reply.content}</p>
+//                 `
                 
-                // Appending the different replies to one Div
-                parentReplyDiv.append(replyDiv)
-                // Appending the ParentReplyDiv to 
-                let thoughtDiv = document.getElementById(`${reply.thought_id}`)
-               
-                thoughtDiv.append(parentReplyDiv)
-                thoughtDiv.querySelector("span").innerText = parseInt(thoughtDiv.querySelector("span").innerText) + 1
-                // location.reload() 
+//                 // Appending the different replies to one Div
+//                 parentReplyDiv.append(replyDiv)
+//                 // Appending the ParentReplyDiv to 
+//                 let thoughtDiv = document.getElementById(`${reply.thought_id}`)
 
-} 
+//                 let deleteReply = document.createElement("button")
+//                 deleteReply.className = "delete-reply-button"
+//                 deleteReply.dataset.id = reply.id 
+//                 deleteReply.innerText = "Delete Reply"
+//                 replyDiv.append(deleteReply)
+               
+//                 thoughtDiv.append(parentReplyDiv)
+                
+//                 thoughtDiv.querySelector("span").innerText = parseInt(thoughtDiv.querySelector("span").innerText) + 1
+//                 // location.reload() 
+
+// } 
 
 
 navBar.addEventListener('click', (event) => {

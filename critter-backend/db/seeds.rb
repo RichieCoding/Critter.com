@@ -49,3 +49,15 @@ reply7 = Reply.create(user: rat2, thought: thought9, content: "I've been to her 
 reply8 = Reply.create(user: pigeon, thought: thought10, content: "wow I love this sentiment. DM me")
 reply9 = Reply.create(user: cat, thought: thought7, content: "Can you please stop posting about our breakup on the timeline...it's embarasing")
 
+cat.thoughts.create(content: "Please stop sharing the cats trailer. cats only sing like that when they are in extreme distress")
+turtle.thoughts.create(content: "there's something so relaxing about sitting on a rock in central park, watching people yell at each other")
+thugPigeon.thoughts.create(content: "if you’re arguing loudly on your phone in public please put it on speaker. i need to hear both sides of the story to know whose side i’m on.")
+thought30 = pigeon.thoughts.create(content: "Real Recognize Real And You Looking Like A Stranger.")
+rat2.thoughts.create(content: "what if we kissed in the fridge beside the broccoli? ahaha jk... unless?")
+catthought = cat2.thoughts.create(content: "I hate andrew lloyd webber. What the hell is jellicle? ???")
+pigeon2.thoughts.create(content: "Y’all using FaceApp but won’t get off this app and face reality!")
+turtle.thoughts.create(content: "giant squid have nothing they want to share with us and I respect that so much")
+
+Reply.create(user: racoon, thought: thought30, content: "fake deep lmao")
+Reply.create(user: turtle, thought: catthought, content: "don't knock it till you try it!!! ")
+Reply.create(user: cat, thought: catthought, content: "idk but i t pisses me off")
