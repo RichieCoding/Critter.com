@@ -28,7 +28,10 @@ function createThought() {
 
 
 
+
+
 createThought()
+
 
 
 fetch ("http://localhost:3000/thoughts")
@@ -92,10 +95,8 @@ function renderThoughts(data) {
         const replyFormDiv = document.createElement('div')
         replyFormDiv.className = 'commentDiv'
         replyFormDiv.innerHTML = `
-          <textarea>
-
-          </textarea>
-          <button type="submit"> Submit </button>
+          <textarea class= "commentText"></textarea>
+          <button class="commentBtn" type="button"> Submit </button>
         `
         thoughtDiv.append(replyFormDiv)
         // const replyForm = document.createElement("text-area")
@@ -115,6 +116,7 @@ mainDiv.addEventListener('click', (e) => {
    
     if (e.target.nextElementSibling.parentElement.nextElementSibling.classList.contains('parentReplyDiv')) {
       e.target.nextElementSibling.parentElement.nextElementSibling.classList.remove('parentReplyDiv')
+      
     } else {
       e.target.nextElementSibling.parentElement.nextElementSibling.classList.add('parentReplyDiv')
     };
@@ -125,16 +127,41 @@ mainDiv.addEventListener('click', (e) => {
 
       if (e.target.parentElement.nextElementSibling.classList.contains('commentDiv')) {
         e.target.parentElement.nextElementSibling.classList.remove('commentDiv')
+
+        // Events for textarea and submit for reply
+        const commentText = document.querySelector('.commentText')
+        const commentBtn = document.querySelector('.commentBtn')
+        commentBtn.addEventListener('click', (event) => {
+          fetch('http://localhost:3000/replies', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              "user_id": e.target.dataset.thoughtId,
+              "content": commentText.value,
+              
+            }) 
+          })
+          .then(resp => resp.json())
+          .then(console.log)
+            
+          
+        })
+        
       } else {
         e.target.parentElement.nextElementSibling.classList.add('commentDiv')
       };
 
-    if (e.target.parentElement.nextElementSibling.nextElementSibling.classList.contains('commentDiv')) {
-      e.target.parentElement.nextElementSibling.nextElementSibling.classList.remove('commentDiv')
-    } else {
-      e.target.parentElement.nextElementSibling.nextElementSibling.classList.add('commentDiv')
-    };
+      if (e.target.parentElement.nextElementSibling.nextElementSibling.classList.contains('commentDiv')) {
+        e.target.parentElement.nextElementSibling.nextElementSibling.classList.remove('commentDiv')
+        console.log('can hit submit')
+      } else {
+        e.target.parentElement.nextElementSibling.nextElementSibling.classList.add('commentDiv')
+      };
   }
+
 
   if (e.target.classList.contains('user-info')) {
     fetch(`http://localhost:3000/users/${e.target.id}`)
@@ -164,8 +191,6 @@ navBar.addEventListener('click', (event) => {
     }
   }
 
-  
-
 })
 
 
@@ -173,11 +198,6 @@ navBar.addEventListener('click', (event) => {
 
 // Show user profile function
 function showUserInfo(data) {
-  // const hello = document.querySelector('#create-thought');
-  // debugger
-  // const hello2 = document.querySelector('#main-thoughts');
-  // hello.style.display = 'none';
-  // hello2.style.display = 'none';
 
   const hello = document.querySelector('.modal')
   hello.style.display = 'block';
@@ -214,26 +234,6 @@ function showUserInfo(data) {
   
 
 }
-
-// const submitButton = document.querySelector("#create-thought")
-//   submitButton.addEventListener("click", function(e) {
-//     e.preventDefault()
-//     let input = e.target.querySelector("textarea").value
-    
-//     fetch("http://localhost:3000/thoughts", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         "Accept": "application/json"
-//       },
-//       body: JSON.stringify({
-//         "user_id": 2,
-//         "content": input
-//       })
-//     }).then(response => response.json())
-//     .then(console.log)
-//     .catch(e => console.log(e))
-//   })
 
 
 
