@@ -1,6 +1,22 @@
 const mainDiv = document.querySelector('#main-thoughts')
 const navBar = document.querySelector('#nav-bar')
 
+// Adds Event Listener For Posting A Thought
+function createThought() {
+  const create = document.querySelector('#create-thought') 
+  create.addEventListener('click', (event) => {
+    // debugger
+    if (event.target.classList.contains('submit-button')) {
+      console.log('hello')
+    }
+  })
+}
+
+
+
+
+
+createThought()
 
 
 
@@ -186,5 +202,9 @@ function showUserInfo(data) {
   
 
 }
+
+
+
+
 
 
