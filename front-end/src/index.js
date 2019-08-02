@@ -26,13 +26,43 @@ function createThought() {
  
 }
 
+// let i = 1000
+// while (i > 0) {
+//   setTimeout(function(){ 
+//     console.log("Hello");
+//     i--;
+//   }, 1000);
+  
+// }
+// let rand = Math.floor(Math.random() * 30) + 1
 
+// var intervalId = window.setInterval(myCallback, 30000)
+
+
+
+
+function myCallback() {
+  fetch("http://localhost:3000/thoughts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "user_id": 7,
+          "content": 'Hello'
+        })
+      }).then(response => response.json())
+      .then(renderNewThought)
+}
 
 
 
 // adds a new thought to the page
 function renderNewThought(thought) {
   console.log(thought)
+  const shareThought = document.querySelector('#create-thought')
+  shareThought.style.display = 'none';
 
   const thoughtDiv = document.createElement('div');
     thoughtDiv.className = 'thoughts';
@@ -74,8 +104,6 @@ function renderNewThought(thought) {
         parentReplyDiv.className = 'parentReplyDiv'
         parentReplyDiv.id = `${thought.id}`
 
-        
-
           
         const replyDiv = document.createElement('div')
         replyDiv.className = 'replyDiv'
@@ -98,6 +126,7 @@ function renderNewThought(thought) {
       // Append the different thoughts to our main body div
 
     mainDiv.prepend(thoughtDiv)
+    
 }
 
 
