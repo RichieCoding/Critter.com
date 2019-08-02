@@ -1,5 +1,6 @@
 const mainDiv = document.querySelector('#main-thoughts')
 const navBar = document.querySelector('#nav-bar')
+const searchBar = document.querySelector('#search')
 
 // Adds Event Listener For Posting A Thought
 function createThought() {
@@ -24,6 +25,25 @@ function createThought() {
     }
   })
  
+}
+
+// Search User
+
+searchBar.addEventListener('keyup', searchUser);
+
+function searchUser(e) {
+  const text = e.target.value.toLowerCase();
+
+  document.querySelectorAll('.thoughts').forEach(function(user){
+    // debugger
+    const userName = user.querySelector('.user-info').innerText
+    
+    if(userName.toLowerCase().indexOf(text) != -1) {
+      user.style.display = 'block'
+    } else {
+      user.style.display = 'none'
+    }
+  });
 }
 
 // let i = 1000
@@ -70,8 +90,8 @@ function renderNewThought(thought) {
     // thoughtDiv.id = thought.id;
     thoughtDiv.innerHTML = `
       <div class="thought-header">
-        <h3 class="user-info" id= ${thought.user_id}> <img src="${thought.image}">
-        ${thought.user_name}</h3>
+        <img src="${thought.image}">
+        <h3 class="user-info" id=${thought.user_id}>${thought.user_name}</h3>
       </div>
       <p>${thought.content}</p>
       <hr>

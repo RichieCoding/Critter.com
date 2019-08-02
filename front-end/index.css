@@ -68,6 +68,16 @@ body p {
   height: 40px;
 }
 
+#search-bar {
+  text-align: center;
+  margin: 20px;
+}
+
+#search {
+  height: 40px;
+  width: 300px;
+}
+
 
 /******************************
       Create Thought Div
@@ -123,6 +133,11 @@ body p {
   letter-spacing: 1.2px;
   color: black;
   font-size: 1.9em;
+}
+
+.thought-header h3:hover {
+  cursor: default; 
+  color: white;
 }
 
 .thoughts p {
@@ -230,11 +245,13 @@ button:hover {
 
 .modal h3 {
   font-size: 2em;
+  
 }
 
 .modal p {
   font-size: 1.4em;
- 
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .show-user-header {
