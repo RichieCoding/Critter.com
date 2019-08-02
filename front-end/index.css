@@ -154,6 +154,11 @@ body p {
   width: 100px;
 }
 
+.likes-button {
+  height: 35px;
+  width: 100px;
+}
+
 .comments-link {
   height: 35px;
   width: 100px;
