@@ -51,26 +51,19 @@ function searchUser(e) {
 }
 
 
-function fetchQuotes() {
-  fetch('http://localhost:3000/quotes')
-  .then(resp => resp.json())
-  .then(function(data){
-    let quoteArray = [];
-    data.forEach((quote) => {
-      quoteArray.push(quote.content)
-    })
-    return quoteArray[Math.round(Math.random() * quoteArray.length)]
-  })
-}
 
-// // Randomly Creates Thoughts ------ Leave Commented Out till you want it to create
-// (function loop() {
-//     const userIdArray = [1,2,3,4,5,6,7,8,9,10]
-//     fetchQuotes;
+
+// Randomly Creates Thoughts ------ Leave Commented Out till you want it to create
+// (function loop(fetchTest) {
+
+//   const userIdArray = [1,2,3,4,5,6,8,9,10]
+//   const quoteRandomArray = ["I just found a wallet, time to buy some bananas","Lick...lick....lick","Sometimes I wish I was an octopus, so I could slap eight people at once.","You can trust your dog to guard your house but never trust your dog to guard your sandwich","If aliens saw humans walking us and picking up our poop, who would they think is in charge?","People say nothing is impossible....but I do nothing everyday","Light travels faster than sound. This is why some people appear bright until you hear them speak.","The difference between stupidity and genius is that genius has its limits","All the things I really like to do are either immoral, illegal or fattening","The average dog is a nicer person than the average person","I don’t believe in astrology; I’m a Sagittarius and we’re skeptical.","My opinions may have changed, but not the fact that I’m right","Trouble knocked at the door, but, hearing laughter, hurried away","Wine is constant proof that God loves us and loves to see us happy","Money won’t buy happiness, but it will pay the salaries of a large research staff to study the problem.","I dream of a better tomorrow, where chickens can cross the road and not be questioned about their motives", "I changed all my passwords to incorrect so my computer just tells me when I forget.", "Whatever you do in life give 100%.......unless you're giving blood","I was planning on doing something today, but I haven't finished doing nothing from yesterday","I wish real life was a cartoon, so that I can wear the same outfit and nobody would care...wait I only have one outfit?"]
+    
 //   let array = userIdArray[Math.floor(Math.random()*userIdArray.length)]
+//   let quoteArray = quoteRandomArray[Math.floor(Math.random()*quoteRandomArray.length)]
 //   var rand = Math.round(Math.random() * (12000 - 500)) + 500;
 //   setTimeout(function() {
-//       myCallback(array, fetchQuotes);
+//       myCallback(array, quoteArray);
 //     loop();  
 //   }, rand);
 // }());
@@ -79,7 +72,7 @@ function fetchQuotes() {
 
 
 
-function myCallback(array, fetchQuotes) {
+function myCallback(array, quoteArray) {
   
   fetch("http://localhost:3000/thoughts", {
     method: "POST",
@@ -89,7 +82,7 @@ function myCallback(array, fetchQuotes) {
         },
         body: JSON.stringify({
           "user_id": array,
-          "content": fetchQuotes
+          "content": quoteArray
         })
       }).then(response => response.json())
       .then(renderNewThought)
