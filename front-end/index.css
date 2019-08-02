@@ -122,10 +122,13 @@ body p {
   background-color: white;
   width: 50%;
   margin: 20px auto;
+  border-radius: 20px;
 }
 
 .thought-header {
   background-color: rgb(0, 169, 233);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 .thought-header h3 {
@@ -147,6 +150,7 @@ body p {
 .thought-header img {
   width: 100px;
   height: 100px;
+  border-radius: 20px;
 }
 
 .replies-link {
