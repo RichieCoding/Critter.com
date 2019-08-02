@@ -57,7 +57,7 @@ rat2.thoughts.create(content: "what if we kissed in the fridge beside the brocco
 turtle.thoughts.create(content: "every day i think about the home i used to live at and i'm so happy they set me free in central park")
 catthought = cat2.thoughts.create(content: "I hate andrew lloyd webber. What the hell is jellicle? ???")
 pigeon2.thoughts.create(content: "Y’all using FaceApp but won’t get off this app and face reality!")
-racoon.thoughts.create(content: "Haven't been online for a while, i had to lay low due to an unfortunate incident")
+racoon.thoughts.create(content: "Haven't been online for a while, i had to lay low due to an unfortunate incident with a dog")
 
 Reply.create(user: racoon, thought: thought30, content: "fake deep lmao")
 Reply.create(user: cat, thought: catthought, content: "idk but it pisses me off")
