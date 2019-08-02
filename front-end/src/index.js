@@ -46,23 +46,20 @@ function searchUser(e) {
   });
 }
 
-// let i = 1000
-// while (i > 0) {
-//   setTimeout(function(){ 
-//     console.log("Hello");
-//     i--;
-//   }, 1000);
-  
-// }
-// let rand = Math.floor(Math.random() * 30) + 1
-
-// var intervalId = window.setInterval(myCallback, 3000)
 
 
+// Randomly Creates Thoughts ------ Leave Commented Out till you want it to create
+// (function loop() {
+//   const userIdArray = [1,2,3,4,5,6,7,8,9,10]
+//   let array = userIdArray[Math.floor(Math.random()*userIdArray.length)]
+//   var rand = Math.round(Math.random() * (12000 - 500)) + 500;
+//   setTimeout(function() {
+//     myCallback(array);
+//     loop();  
+//   }, rand);
+// }());
 
-
-
-function myCallback() {
+function myCallback(array) {
   fetch("http://localhost:3000/thoughts", {
         method: "POST",
         headers: {
@@ -70,11 +67,12 @@ function myCallback() {
           "Accept": "application/json"
         },
         body: JSON.stringify({
-          "user_id": 7,
+          "user_id": array,
           "content": 'Hello'
         })
       }).then(response => response.json())
       .then(renderNewThought)
+  console.log('hello')
 }
 
 
