@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_02_142217) do
+ActiveRecord::Schema.define(version: 2019_08_02_150315) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 2019_08_02_142217) do
     t.datetime "updated_at", null: false
     t.index ["thought_id"], name: "index_likes_on_thought_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "random_quotes", force: :cascade do |t|

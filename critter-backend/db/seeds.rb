@@ -74,3 +74,10 @@ Reply.create(user: racoon, thought: thoughttt, content: "Wish I could be there!"
 Reply.create(user: dolphin, thought: thoughttt, content: "i'll try to get a ride")
 Reply.create(user: dolphin, thought: th, content: "ma'am this is a wendy's")
 
+
+Quote.create(content: "I just found a wallet, time to buy some bananas")
+Quote.create(content: "Lick...lick....lick")
+Quote.create(content: "Remember when you were somebody")
+Quote.create(content: "Seriously what smells better than the sewers")
+Quote.create(content: "My hair is faboulous!")
+Quote.create(content: "How many cats does it take to screw in a lightbulb....")

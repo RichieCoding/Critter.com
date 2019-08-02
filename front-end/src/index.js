@@ -51,19 +51,35 @@ function searchUser(e) {
 }
 
 
+function fetchQuotes() {
+  fetch('http://localhost:3000/quotes')
+  .then(resp => resp.json())
+  .then(function(data){
+    let quoteArray = [];
+    data.forEach((quote) => {
+      quoteArray.push(quote.content)
+    })
+    return quoteArray[Math.round(Math.random() * quoteArray.length)]
+  })
+}
 
 // // Randomly Creates Thoughts ------ Leave Commented Out till you want it to create
 // (function loop() {
-  //   const userIdArray = [1,2,3,4,5,6,7,8,9,10]
+//     const userIdArray = [1,2,3,4,5,6,7,8,9,10]
+//     fetchQuotes;
 //   let array = userIdArray[Math.floor(Math.random()*userIdArray.length)]
 //   var rand = Math.round(Math.random() * (12000 - 500)) + 500;
 //   setTimeout(function() {
-  //     myCallback(array);
+//       myCallback(array, fetchQuotes);
 //     loop();  
 //   }, rand);
 // }());
 
-function myCallback(array) {
+
+
+
+
+function myCallback(array, fetchQuotes) {
   
   fetch("http://localhost:3000/thoughts", {
     method: "POST",
@@ -73,7 +89,7 @@ function myCallback(array) {
         },
         body: JSON.stringify({
           "user_id": array,
-          "content": quote
+          "content": fetchQuotes
         })
       }).then(response => response.json())
       .then(renderNewThought)
