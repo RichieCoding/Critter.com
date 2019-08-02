@@ -23,10 +23,16 @@ class ThoughtsController < ApplicationController
     thought.destroy 
   end
 
+
+
+
   private 
 
   def thought_params
     params.require(:thought).permit(:user_id, :content)
   end
 
+
+
+  
 end
