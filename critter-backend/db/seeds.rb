@@ -62,3 +62,10 @@ racoon.thoughts.create(content: "Haven't been online for a while, i had to lay l
 Reply.create(user: racoon, thought: thought30, content: "fake deep lmao")
 Reply.create(user: turtle, thought: catthought, content: "don't knock it till you try it!!! ")
 Reply.create(user: cat, thought: catthought, content: "idk but i t pisses me off")
+
+RandomQuote.create(content: "I just found a wallet, time to buy some bananas")
+RandomQuote.create(content: "Lick...lick....lick")
+RandomQuote.create(content: "Remember when you were somebody")
+RandomQuote.create(content: "Seriously what smells better than the sewers")
+RandomQuote.create(content: "My hair is faboulous!")
+RandomQuote.create(content: "How many cats does it take to screw in a lightbulb....")
