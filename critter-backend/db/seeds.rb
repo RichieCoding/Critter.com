@@ -31,6 +31,7 @@ Reply.create(user: pigeon, thought: thought1, content: "I know where you're at!"
 Reply.create(user:racoon, thought: thought3, content: "Watch your back")
 Reply.create(user: pigeon, thought: thought4, content: 'Maybe if you left the nest ya damn rat with wings ')
 
+cat.thoughts.create(content: "Please stop sharing the cats trailer. cats only sing like that when they are in extreme distress")
 thought4 = Thought.create(user: cat, content: "I was sleeping in the drinks aisle and saw someone steal an Arizona Green Tea, should I say something?")
 thought5 = Thought.create(user: rat, content: "Getting tired of all these other rats attached to my tail")
 thought7 = Thought.create(user: cat2, content: "strangest thing i ever did was think you gave a crap about me...😔💔💯")
@@ -49,14 +50,14 @@ reply7 = Reply.create(user: rat2, thought: thought9, content: "I've been to her 
 reply8 = Reply.create(user: pigeon, thought: thought10, content: "wow I love this sentiment. DM me")
 reply9 = Reply.create(user: cat, thought: thought7, content: "Can you please stop posting about our breakup on the timeline...it's embarasing")
 
-cat.thoughts.create(content: "Please stop sharing the cats trailer. cats only sing like that when they are in extreme distress")
 turtle.thoughts.create(content: "there's something so relaxing about sitting on a rock in central park, watching people yell at each other")
 thugPigeon.thoughts.create(content: "if you’re arguing loudly on your phone in public please put it on speaker. i need to hear both sides of the story to know whose side i’m on.")
+dolphin.thoughts.create(content: "day 632. no one knows im here!")
 thought30 = pigeon.thoughts.create(content: "Real Recognize Real And You Looking Like A Stranger.")
 rat2.thoughts.create(content: "what if we kissed in the fridge beside the broccoli? ahaha jk... unless?")
 turtle.thoughts.create(content: "every day i think about the home i used to live at and i'm so happy they set me free in central park")
 catthought = cat2.thoughts.create(content: "I hate andrew lloyd webber. What the hell is jellicle? ???")
-pigeon2.thoughts.create(content: "Y’all using FaceApp but won’t get off this app and face reality!")
+th = pigeon2.thoughts.create(content: "Y’all using FaceApp but won’t get off this app and face reality!")
 racoon.thoughts.create(content: "Haven't been online for a while, i had to lay low due to an unfortunate incident with a dog")
 
 Reply.create(user: racoon, thought: thought30, content: "fake deep lmao")
@@ -66,3 +67,5 @@ thoughttt = rat2.thoughts.create(content: "Pizza party at the Delancey St F trai
 Reply.create(user: rat, thought: thoughttt, content: "Stop telling everyone!!!")
 Reply.create(user: pigeon, thought: thoughttt, content: "I'll try to make it!")
 Reply.create(user: racoon, thought: thoughttt, content: "Wish I could be there!")
+Reply.create(user: dolphin, thought: thoughttt, content: "i'll try to get a ride")
+Reply.create(user: dolphin, thought: th, content: "ma'am this is a wendy's")
