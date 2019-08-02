@@ -196,7 +196,17 @@ function renderNewThought(thought) {
         // replyButton.className = "comments-link"
         // replyButton.innerText = "Reply"
         // newDiv.append(replyButton)
+        
+
+        //like button 
+
+        let likeButton = document.createElement("button")
+        likeButton.innerHTML = "<span class='likes'> 0 </span> Likes"
+        newDiv.append(likeButton)
+        
         thoughtDiv.append(newDiv)
+
+
         
         if (thought.user_id === 7) {
           let deleteButton = document.createElement("button")
@@ -255,16 +265,7 @@ function renderNewThought(thought) {
       
       
     }
-    // like button
-    const containerDivs = document.querySelectorAll(".container-div")
-    containerDivs.forEach(container => {
-
-      let likeButton = document.createElement("button")
-      likeButton.className = "likes-button"
-      likeButton.innerHTML = "<span> 0 </span> Likes"
-      container.append(likeButton)
-
-    })
+   
     
   }
     mainDiv.addEventListener('click', (e) => {
@@ -326,8 +327,10 @@ function renderNewThought(thought) {
     .then(e.target.parentNode.parentNode.remove())
   }
   
-  if (e.target.className= "likes-button") {
-    e.target.querySelector("span").innerText = parseInt(e.target.querySelector("span").innerText) + 1
+  if (e.target.firstElementChild.className === "likes") {
+     console.log("likes")
+     e.target.firstElementChild.innerText = parseInt(e.target.firstElementChild.innerText) + 1
+    
   }
   
 }) 
