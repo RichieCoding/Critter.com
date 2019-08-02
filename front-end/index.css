@@ -77,10 +77,12 @@ body p {
   margin: 0 auto;
   text-align: center;
   border: 1px solid black;
-  background: rgb(0, 169, 233);
+  background: rgb(49, 195, 248);
   padding-bottom: 10px;
   font-size: 1.2em;
   display: none;
+
+  border-top-style: none;
 }
 
 #create-thought textarea {

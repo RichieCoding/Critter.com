@@ -36,7 +36,8 @@ function createThought() {
 // }
 // let rand = Math.floor(Math.random() * 30) + 1
 
-// var intervalId = window.setInterval(myCallback, 30000)
+// var intervalId = window.setInterval(myCallback, 3000)
+
 
 
 
