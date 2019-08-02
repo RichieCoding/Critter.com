@@ -63,9 +63,14 @@ racoon.thoughts.create(content: "Haven't been online for a while, i had to lay l
 Reply.create(user: racoon, thought: thought30, content: "fake deep lmao")
 Reply.create(user: cat, thought: catthought, content: "idk but it pisses me off")
 Reply.create(user: turtle, thought: catthought, content: "don't knock it till you try it!!! ")
+
+Reply.create(user: cat, thought: catthought, content: "idk but i t pisses me off")
+
+
 thoughttt = rat2.thoughts.create(content: "Pizza party at the Delancey St F train!")
 Reply.create(user: rat, thought: thoughttt, content: "Stop telling everyone!!!")
 Reply.create(user: pigeon, thought: thoughttt, content: "I'll try to make it!")
 Reply.create(user: racoon, thought: thoughttt, content: "Wish I could be there!")
 Reply.create(user: dolphin, thought: thoughttt, content: "i'll try to get a ride")
 Reply.create(user: dolphin, thought: th, content: "ma'am this is a wendy's")
+
