@@ -1,3 +1,8 @@
 # Critter.com-
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rZ9fUZ1rhfI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+A Twitter-based application that allows a user to post their thoughts, comment on others' thoughts, and delete their own content. 
+
+
+
+Demo:
+https://youtu.be/rZ9fUZ1rhfI
