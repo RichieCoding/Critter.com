@@ -26,5 +26,5 @@ Create a single page application with vanilla JavaScript while fetching data fro
 
 ## `Video`
 
-*https://youtu.be/rZ9fUZ1rhfI
+- https://youtu.be/rZ9fUZ1rhfI
 
