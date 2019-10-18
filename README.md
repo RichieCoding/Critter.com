@@ -11,10 +11,11 @@ Create a single page application with vanilla JavaScript while fetching data fro
 1. fork & clone repo
 2. cd into critter-backend
 3. run bundle install for dependencies
-4. run rails s
+5. run rails db:migrate & rails db:seed
+6. run rails s
 
-5. cd into front-end
-6. open index.html
+7. cd into front-end
+8. open index.html
 
 ## `Built With`
 
