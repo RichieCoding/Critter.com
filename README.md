@@ -22,8 +22,7 @@ Create a single page application with vanilla JavaScript while fetching data fro
 * Vanilla JavaScript
 * HTML5 / CSS3
 * Ruby on Rails 
-* PostgreSQL
-* JSON Web Token
+* SQLite
 
 ## `Video`
 
